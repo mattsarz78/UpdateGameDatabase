@@ -21,7 +21,7 @@ namespace UpdateGameDatabase
 
 		static void Updates(string arg, string s)
 		{
-			using (var reader = new StreamReader(@"D:\updates.csv"))
+			using (var reader = new StreamReader(@"D:\SEC.csv"))
 			{
 				using (var writer = new StreamWriter(@"D:\Updates.txt"))
 				{
@@ -42,7 +42,8 @@ namespace UpdateGameDatabase
 							string whereClause = arg == "U"
 								? string.Format(" where game = {0} and season = {1};", game[0], game[9])
 								: string.Format(", game = {0} where id = {1};", game[0], game[9]);
-							var lineToWrite = string.Format("Update {9} set time = {0}, week = {1}, network = {2}, networkjpg = {3}, coveragenotes = {4}, mediaindicator = {5}, TVType = {6}, listorder = {7}{8}"
+							var lineToWrite = string.Format("Update {9} set time = {0}, week = {1}, network = {2}, networkjpg = {3}, coveragenotes = {4}, mediaindicator = {5}, " +
+                                "TVType = {6}, listorder = {7}{8}"
 								, game[3], game[4], game[1], game[2], game[5], game[6], game[7], game[8], whereClause, s);
 							writer.WriteLine(lineToWrite);
 						}
